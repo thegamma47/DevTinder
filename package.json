@@ -1,0 +1,22 @@
+{
+  "name": "devtinder",
+  "version": "1.0.0",
+  "description": "this is tinder ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thegamma47"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "gamma",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

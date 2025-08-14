@@ -1,0 +1,11 @@
+-create a repository
+-initialize the repo
+-node_modules,package.json,package-lock.json
+-install express
+-create a server
+-listen to ports 7866
+-write request handlers for /test, /hello
+-install nodemon and update script inside package-lock.json
+-what are dependencies
+-difference btn (~,^)
+-what is the ude of -g in npm i 
