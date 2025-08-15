@@ -9,3 +9,12 @@
 -what are dependencies
 -difference btn (~,^)
 -what is the ude of -g in npm i 
+///////////////////////////
+
+-initialize git
+-.gitignore
+-create a remote repo on github
+-push all the code to remote origin
+-play with routes /hello,/,hello2
+-order of the routes matter a lot
+-write logic to all http handlers
