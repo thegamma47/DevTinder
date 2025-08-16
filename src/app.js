@@ -2,25 +2,41 @@ const express= require ('express');
 
 const app = express();
 
-//This will only handel  get method for /user
-app.get("/user", (req,res) =>{
-    res.send({firstName:"Gamma",lastName:"rajpoot"});
-});
+app.get("/user",(req,res,next)=>{
+    next();
+    res.send("response1")
+    console.log("got the answer")
+    
+},
+app.get("/user",(req,res,next)=>{
+    next();
+    res.send("response2")
+    console.log("got the answer 2")
+},
 
+app.get("/user",(req,res,next)=>{
+    next();
+    res.send("response3")
+    console.log("got the answer 3")
+},
 
-app.post("/user",(req,res)=>{
-    res.send("data sucessfully saved in the data base");
-});
+app.get("/user",(req,res,next)=>{
+    next();
+    res.send("response4")
+    console.log("got the answer 4")
+},
 
-app.delete("/user",(req,res)=>{
-    res.send("data sucessfully deleted from the data base");
-});
+app.get("/user",(req,res,next)=>{
+    next();
+    res.send("response5")
+    console.log("got the answer 5")
+},
+app.get("/user",(req,res,next)=>{
+    res.send("response6")
+    console.log("got the answer 6")
+}
 
-//This will match all the http methords for /test
-app.use("/test",(req,res)=>{
-    res.send('mic testing 123 ');
-
-});
+))))));
 
 
 

@@ -18,4 +18,7 @@
 -play with routes /hello,/,hello2
 -order of the routes matter a lot
 -write logic to all http handlers
--
+-explore routing and use of +,?,*,() in the routes
+-use of regx /a/
+-reading the query params in the routes
+-reading dynamic routes 
