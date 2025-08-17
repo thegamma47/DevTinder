@@ -22,3 +22,13 @@
 -use of regx /a/
 -reading the query params in the routes
 -reading dynamic routes 
+
+-multiple routes handlers
+-next()
+-next function errors along with res.send
+-app.use("/user",[rh1,rh2],rh3,rh4,[rh5])
+-what is middleware? why do we need it
+-how express js is handling routes behind the seen
+-difference btn app.use and app.all
+-write a auth dummy middleware for admin
+-write a auth dummy middleware for all user routes except dor /user/login
