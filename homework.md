@@ -32,3 +32,4 @@
 -difference btn app.use and app.all
 -write a auth dummy middleware for admin
 -write a auth dummy middleware for all user routes except dor /user/login
+-error handling using app.use(wild card)-always put at hte end 
