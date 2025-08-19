@@ -33,3 +33,11 @@
 -write a auth dummy middleware for admin
 -write a auth dummy middleware for all user routes except dor /user/login
 -error handling using app.use(wild card)-always put at hte end 
+
+-create a free cluster on MongoDB official Website
+-install Mongoose lib
+-connect your application to the database
+-call the connectedDB function and connect to database before starting the server application on 7866
+- create a user schema and user model
+- create a POST/signup API to add the data to the database
+-push some document using API call from the PostMan
