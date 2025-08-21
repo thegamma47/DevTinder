@@ -48,3 +48,9 @@
 -user.findOne
 -API- Get user by email or find user by email
 -API-Feed API - GET/feed -gat all user from database
+-API-get user by id
+-create a delete user Api
+-difference btn patch and put
+-API update a user
+-what are the options in model.findOneAndUpdate method,explore more about it
+-API  update the user with the help of emailid
