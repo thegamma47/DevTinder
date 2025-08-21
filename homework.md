@@ -45,3 +45,6 @@
 -js. object and json object difference
 -add express.json middleware in your app
 -make your signup API dynamic to recive data from the end user
+-user.findOne
+-API- Get user by email or find user by email
+-API-Feed API - GET/feed -gat all user from database
