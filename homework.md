@@ -63,3 +63,5 @@
 - add timestamp to the user schema
 -add API level validations on patch request and post api
 -data sanitizion-add API level validations for each field
+-install validator
+-explore the validator library and function and use validator function for pass,photourl,emali
