@@ -2,20 +2,35 @@ const mongoose=require('mongoose');
 
 const userSchema=mongoose.Schema({
     firstName: {
-        type:String
+        type:String,
+        required:true,
     },
     lastName: {
-        type:String
+        type:String,
     },
     age :{
-        type:Number
+        type:Number,
     },
     gender:{
-        type:String
+        type:String,
+         enum: ["male", "female", "other"],
+           required:true,
     },
     email:{
-        type:String
-    }
+        type:String,
+        required:true,
+        unique:true,
+    },
+    photoUrl:{
+        type:String,
+    },
+    about:{
+        type:String,
+    },
+    skills:{
+        type:{String},
+    },
+
 
 });
 

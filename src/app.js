@@ -5,10 +5,10 @@ const User=require("./models/user");
 
 app.use(express.json());
 
-app.post("/signup",async(req,res)=>{
-   
-    const user = new User(req.body);
+//signup route
 
+app.post("/signup",async(req,res)=>{
+   const user = new User(req.body);
      try{
     await user.save();
     res.send("user signed up in successfully!")
@@ -21,7 +21,7 @@ app.post("/signup",async(req,res)=>{
 
 // Get user by email or find user by email
 
-app.get("/user",async(req,res)=>{
+app.get("/user/:emailId",async(req,res)=>{
     const userEmail=req.params.emailId;
 
     try{
@@ -60,7 +60,7 @@ app.get("/feed",async(req,res)=>{
 
 //delete a user from the database
 
-app.delete("/user",async(req,res)=>{
+app.delete("/user/:id",async(req,res)=>{
     const userId=req.params.Id;
     try{
         const userId=await userfindByIdAndDelete(userId);
@@ -72,11 +72,18 @@ app.delete("/user",async(req,res)=>{
 
 //update data of the user
 
-app.patch("/user",async(req,res)=>{
-    const userId=req.params.userId;
+app.patch("/user/:userid",async(req,res)=>{
+    const userId=req.params?.userId;
     const data=req.body;
     try{
-        await user.findByIdAndUpdate({_id:userId},data,{returnDocument:"before"})
+        const ALLOWED_UPDATES=["skills","photoUrl","age","gender","about"]
+        const isupdateAllowed= Object.keys(data).every((k)=>
+        ALLOWED_UPDATES.includes(k)
+        );
+        if(!isupdateAllowed){
+            throw new Error("update not allowed")
+        }
+        await user.findByIdAndUpdate({_id:userId},data,{returnDocument:"after",runValidators:true,})
         res.send("user updated successfully")
     }catch(err){
         res.status(400).send("something went wrong")

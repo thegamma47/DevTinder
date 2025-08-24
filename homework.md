@@ -54,3 +54,12 @@
 -API update a user
 -what are the options in model.findOneAndUpdate method,explore more about it
 -API  update the user with the help of emailid
+
+-explore schematype option from the document
+-add require,minlength,max,trim unique,lowercase
+-add default
+-create a custom validation for gender
+-improve the DB schema - put all appropriate validation for each field of the schema 
+- add timestamp to the user schema
+-add API level validations on patch request and post api
+-data sanitizion-add API level validations for each field
