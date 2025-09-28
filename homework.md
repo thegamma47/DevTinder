@@ -65,3 +65,11 @@
 -data sanitizion-add API level validations for each field
 -install validator
 -explore the validator library and function and use validator function for pass,photourl,emali
+-Never trust Req.body
+
+-validate data in signup API
+-install bcrypt package
+-create passwordHash using bcrypt.hash and save the userd in encrypted password
+-create login API
+-write logic on my own
+-compare password and email and throw error if they are invalid 

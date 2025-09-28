@@ -1,44 +1,67 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
+const validator = require('validator');
 
-const validator=require('validator')
-
-const userSchema=mongoose.Schema({
+const userSchema = new mongoose.Schema(
+  {
     firstName: {
-        type:String,
-        required:true,
+      type: String,
+      required: [true, "First name is required"],
+      trim: true,
+      minlength: [2, "First name must be at least 2 characters"],
+      maxlength: [50, "First name cannot exceed 50 characters"],
     },
     lastName: {
-        type:String,
+      type: String,
+      trim: true,
+      maxlength: [50, "Last name cannot exceed 50 characters"],
     },
-    age :{
-        type:Number,
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+      minlength: [8, "Password must be at least 8 characters"],
     },
-    gender:{
-        type:String,
-         enum: ["male", "female", "other"],
-           required:true,
+    age: {
+      type: Number,
+      min: [0, "Age must be positive"],
+      max: [120, "Age seems invalid"],
     },
-    email:{
-        type:String,
-        required:true,
-        unique:true,
-        validate(value){
-            if(!validator.isEmail(value)){
-                throw new Error("invalid email address: + value")
-            }
-        },
+    gender: {
+      type: String,
+      enum: ["male", "female", "other"],
+      required: false,   // ✅ you already made it optional
     },
-    photoUrl:{
-        type:String,
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+      unique: true,
+      lowercase: true,
+      validate: {
+        validator: (value) => validator.isEmail(value),
+        message: (props) => `${props.value} is not a valid email!`,
+      },
     },
-    about:{
-        type:String,
+    photoUrl: {
+      type: String,
+      validate: {
+        validator: (value) => validator.isURL(value),
+        message: (props) => `${props.value} is not a valid URL`,
+      },
     },
-    skills:{
-        type:{String},
+    about: {
+      type: String,
+      maxlength: [200, "About section cannot exceed 200 characters"],
     },
+    skills: {
+      type: [String],
+      validate: {
+        validator: (skills) => skills.length > 0,
+        message: "At least one skill is required",
+      },
+    },
+  },
+  {
+    timestamps: true,   // ✅ correct place
+  }
+);
 
-
-});
-
-module.exports=mongoose.model("User",userSchema)
+module.exports = mongoose.model("User", userSchema);
