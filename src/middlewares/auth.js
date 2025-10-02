@@ -1,24 +1,25 @@
-const adminAuth=(req,res,next)=>{
-    const token="xyz";
-    const isAdminAuthorized=token==="xyz";
-    if(!isAdminAuthorized){
-        res.status(404).send("unAuthorized request");
-    } else{
-        next();
+const { findById } = require("../models/user");
+
+const userAuth = async(req,res,next)=>{
+   // Read the token from the req cookies
+    try{const {token}=req.cookies;
+    if(!token){
+        throw new Error("token is not valid")
     }
+  // Validate the token 
+    const decodedObj = await Jwt.varify(token,"thegamma@7380");
+  // Find  the user
+    const {_id} = decodedObj;
 
-};
-
-const userAuth=(req,res,next)=>{
-    const token="xyz";
-    const isAdminAuthorized=token==="xyz";
-    if(!isAdminAuthorized){
-        res.status(404).send("unAuthorized request");
-    } else{
-        next();
+    const user = await User.findById(_id);
+    if(!user){
+        throw new Error("User not found ")
     }
-
-};
+        req.user = user;
+    next();}catch(err){
+    console.error(err.stack);
+    res.status(500).send("Something went wrong");
+}};
 
 module.exports = {
     adminAuth,
